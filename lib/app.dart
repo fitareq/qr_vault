@@ -5,6 +5,8 @@ import 'package:qr_vault/feature/generate/provider/generator_provider.dart';
 import 'package:qr_vault/feature/scanner/provider/scanner_provider.dart';
 import 'package:qr_vault/main_screen.dart';
 
+import 'feature/history/provider/history_provider.dart';
+
 class QRVaultApp extends StatefulWidget {
   const QRVaultApp({super.key});
 
@@ -19,6 +21,7 @@ class _QRVaultAppState extends State<QRVaultApp> {
       providers: [
         ChangeNotifierProvider(create: (_) => ScannerProvider()),
         ChangeNotifierProvider(create: (_) => QRGeneratorProvider()),
+        ChangeNotifierProvider(create: (_) => HistoryProvider()),
       ],
       child: MaterialApp(
         title: "QR Vault",
