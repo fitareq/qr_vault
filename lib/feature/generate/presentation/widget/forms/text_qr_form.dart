@@ -27,14 +27,20 @@ class _TextQRFormState extends State<TextQRForm> {
           TextFormField(
             controller: _controller,
             decoration: const InputDecoration(
-              labelText: 'Enter text',
+              labelText: AppStrings.enterText,
               prefixIcon: Icon(Icons.text_fields),
             ),
             validator:
-                (val) => val == null || val.trim().isEmpty ? 'Required' : null,
+                (val) =>
+                    val == null || val.trim().isEmpty
+                        ? AppStrings.required
+                        : null,
           ),
           SizedBox(height: 10),
-          ElevatedButton(onPressed: _submit, child: const Text('Generate QR')),
+          ElevatedButton(
+            onPressed: _submit,
+            child: const Text(AppStrings.generateQr),
+          ),
         ],
       ),
     );

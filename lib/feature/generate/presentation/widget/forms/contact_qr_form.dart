@@ -32,11 +32,11 @@ class _ContactQRFormState extends State<ContactQRForm> {
           children: [
             TextFormField(
               controller: _name,
-              decoration: const InputDecoration(
-                labelText: 'Name',
-                prefixIcon: Icon(Icons.person),
+              decoration: InputDecoration(
+                labelText: AppStrings.contactNameLabel,
+                prefixIcon: const Icon(Icons.person),
               ),
-              validator: (v) => v!.isEmpty ? 'Required' : null,
+              validator: (v) => v!.isEmpty ? AppStrings.required : null,
               keyboardType: TextInputType.name,
               textInputAction: TextInputAction.next,
             ),
@@ -44,18 +44,18 @@ class _ContactQRFormState extends State<ContactQRForm> {
             TextFormField(
               controller: _phone,
               decoration: const InputDecoration(
-                labelText: 'Phone Number',
+                labelText: AppStrings.contactPhoneLabel,
                 prefixIcon: Icon(Icons.phone),
               ),
               keyboardType: TextInputType.phone,
               textInputAction: TextInputAction.next,
-              validator: (v) => v!.isEmpty ? 'Required phone' : null,
+              validator: (v) => v!.isEmpty ? AppStrings.required : null,
             ),
             SizedBox(height: 10),
             TextFormField(
               controller: _email,
               decoration: const InputDecoration(
-                labelText: 'Email',
+                labelText: AppStrings.contactEmailLabel,
                 prefixIcon: Icon(Icons.email_outlined),
               ),
               keyboardType: TextInputType.emailAddress,
@@ -64,7 +64,7 @@ class _ContactQRFormState extends State<ContactQRForm> {
             SizedBox(height: 10),
             ElevatedButton(
               onPressed: _submit,
-              child: const Text('Generate QR'),
+              child: const Text(AppStrings.generateQr),
             ),
           ],
         ),

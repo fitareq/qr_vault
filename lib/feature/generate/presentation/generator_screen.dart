@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qr_vault/core/constants/app_strings.dart';
 import 'package:qr_vault/feature/generate/presentation/widget/forms/forms.dart';
 import 'package:qr_vault/feature/generate/presentation/widget/qr_type_card.dart';
 
@@ -13,7 +14,7 @@ class GeneratorScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = Provider.of<QRGeneratorProvider>(context);
     return Scaffold(
-      appBar: AppBar(title: const Text('QR Code Generator')),
+      appBar: AppBar(title: const Text(AppStrings.generateTitle)),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(

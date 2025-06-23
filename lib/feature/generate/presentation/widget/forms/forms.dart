@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:qr_vault/core/constants/app_strings.dart';
 
 import '../../../../../shared/widgets/qr_preview.dart';
 import '../../../provider/generator_provider.dart';
@@ -33,25 +34,80 @@ class QRFormSwitcher extends StatelessWidget {
           },
         );
       case QRType.url:
-        return UrlQRForm(onValidData: setData);
+        return UrlQRForm(
+          onValidData: (data) {
+            setData;
+            _showQRPreview(context, data);
+          },
+        );
       case QRType.email:
-        return EmailQRForm(onValidData: setData);
+        return EmailQRForm(
+          onValidData: (data) {
+            setData;
+            _showQRPreview(context, data);
+          },
+        );
       case QRType.phone:
-        return PhoneQRForm(onValidData: setData);
+        return PhoneQRForm(
+          onValidData: (data) {
+            setData;
+            _showQRPreview(context, data);
+          },
+        );
       case QRType.sms:
-        return SmsQRForm(onValidData: setData);
+        return SmsQRForm(
+          onValidData: (data) {
+            setData;
+            _showQRPreview(context, data);
+          },
+        );
       case QRType.wifi:
-        return WifiQRForm(onValidData: setData);
+        return WifiQRForm(
+          onValidData: (data) {
+            setData;
+            _showQRPreview(context, data);
+          },
+        );
       case QRType.geo:
-        return GeoQRForm(onValidData: setData);
+        return GeoQRForm(
+          onValidData: (data) {
+            setData;
+            _showQRPreview(context, data);
+          },
+        );
       case QRType.contact:
-        return ContactQRForm(onValidData: setData);
+        return ContactQRForm(
+          onValidData: (data) {
+            setData;
+            _showQRPreview(context, data);
+          },
+        );
       case QRType.event:
-        return EventQRForm(onValidData: setData);
+        return EventQRForm(
+          onValidData: (data) {
+            setData;
+            _showQRPreview(context, data);
+          },
+        );
     }
   }
 
   void _showQRPreview(BuildContext context, String data) {
-    showDialog(context: context, builder: (_) => QRPreview(data: data));
+    showDialog(
+      context: context,
+      builder:
+          (_) => Dialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            backgroundColor: Theme.of(context).colorScheme.surface,
+            insetPadding: EdgeInsets.all(20),
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.6,
+              child: Center(child: QRPreview(data: data)),
+            ),
+          ),
+    );
   }
 }
