@@ -13,12 +13,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Java
-        uses: actions/setup-java@v4
+#      - name: Setup Java
+#        uses: actions/setup-java@v4
+#        with:
+#          distribution: 'adopt'
+#          java-version: '17'
+#          cache: gradle
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
         with:
-          distribution: 'adopt'
-          java-version: '17'
-          cache: gradle
+          flutter-version: '3.7.2'
+      - name: install dependencies
+        run: flutter pub get
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
