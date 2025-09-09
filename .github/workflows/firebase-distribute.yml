@@ -38,7 +38,6 @@ jobs:
 
           flutter build apk \
             --target lib/main.dart \
-            --dart-define-from-file=.env/development.env \
             --build-name=${BUILD_NAME} --build-number=${BUILD_NUMBER}
       - name: deploy to firebase
         uses: ./.github/actions/firebase-app-distribution
