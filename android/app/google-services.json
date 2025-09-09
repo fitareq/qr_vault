@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:671308185991:android:a6bf58f0df644339789322",
+        "mobilesdk_app_id": "1:671308185991:android:1e3ec304e22f87eb789322",
         "android_client_info": {
-          "package_name": "com.fitareq.qr_vault"
+          "package_name": "com.fitareq.qrvault"
         }
       },
       "oauth_client": [],

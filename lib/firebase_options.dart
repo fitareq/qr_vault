@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCpnmAYTeMZc0uRZDLS0XvdE5-k_X6igQg',
-    appId: '1:671308185991:android:a6bf58f0df644339789322',
+    appId: '1:671308185991:android:1e3ec304e22f87eb789322',
     messagingSenderId: '671308185991',
     projectId: 'ecart-a797c',
     databaseURL: 'https://ecart-a797c.firebaseio.com',
@@ -60,11 +60,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAVOAfBFKUOrO24aNoWKmuQpgTtV06BcEc',
-    appId: '1:671308185991:ios:c8e2d20fd0ae4eed789322',
+    appId: '1:671308185991:ios:5bc62b8fb8adf210789322',
     messagingSenderId: '671308185991',
     projectId: 'ecart-a797c',
     databaseURL: 'https://ecart-a797c.firebaseio.com',
     storageBucket: 'ecart-a797c.appspot.com',
-    iosBundleId: 'com.fitareq.qrVault',
+    iosBundleId: 'com.fitareq.qrvault',
   );
+
 }

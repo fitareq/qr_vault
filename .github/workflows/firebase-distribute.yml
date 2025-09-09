@@ -21,10 +21,11 @@ jobs:
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEYSTORE_ALIAS: ${{ secrets.KEY_ALIAS }}
         run: |
           echo "$KEYSTORE_BASE64" | base64 --decode > android/app/upload-keystore.jks
           cat <<EOF > android/key.properties
-          keyAlias=upload
+          keyAlias=${KEYSTORE_ALIAS}
           storePassword=${KEYSTORE_PASSWORD}
           keyPassword=${KEYSTORE_PASSWORD}
           storeFile=./upload-keystore.jks
