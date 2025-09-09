@@ -43,7 +43,7 @@ jobs:
         uses: ./.github/actions/firebase-app-distribution
         with:
           firebase-service-credentials: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-          app-file-path: build/app/outputs/flutter-apk/app-development-release.apk
+          app-file-path: build/app/outputs/flutter-apk/app-release.apk
           firebase-app-id: ${{ secrets.FIREBASE_ANDROID_APP_ID }}
           distribute: true
           tester-groups: dev
