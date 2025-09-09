@@ -16,7 +16,7 @@ jobs:
       - name: Flutter setup
         uses: ./.github/actions/flutter-setup
         with:
-          flutter-version: ' 3.32.8'
+          flutter-version: '3.32.8'
       - name: keystore setup
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}

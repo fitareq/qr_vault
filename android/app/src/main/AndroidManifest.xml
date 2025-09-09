@@ -3,7 +3,7 @@
 
 
     <application
-        android:label="qr_vault"
+        android:label="QrVault"
         android:name="${applicationName}"
         android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/ic_launcher">
