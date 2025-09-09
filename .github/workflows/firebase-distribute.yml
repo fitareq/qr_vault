@@ -13,34 +13,38 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Java
-        uses: actions/setup-java@v4
+      - name: Flutter setup
+        uses: ./.github/actions/flutter-setup
         with:
-          distribution: 'adopt'
-          java-version: '17'
-          cache: gradle
-      - name: Make gradlew executable
-        run: |
-         cd android
-         chmod +x ./gradlew
-
-      - name: Decode Keystore
-        run: |
-          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/eshiksa-key.jks
-
-      - name: Build Signed Release APK
-        working-directory: android
+          flutter-version: ' 3.32.8'
+      - name: keystore setup
         env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-        run: ./gradlew assembleRelease
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 --decode > android/app/upload-keystore.jks
+          cat <<EOF > android/key.properties
+          keyAlias=upload
+          storePassword=${KEYSTORE_PASSWORD}
+          keyPassword=${KEYSTORE_PASSWORD}
+          storeFile=./upload-keystore.jks
+          EOF
 
+      - name: build apk
+        env:
+          BUILD_NUMBER: ${{ github.run_number }}
+        run: |
+          BUILD_NAME=$(date +'%Y.%m.%d')
 
-      - name: Upload to Firebase App Distribution
-        uses: wzieba/Firebase-Distribution-Github-Action@v1
+          flutter build apk \
+            --target lib/main_development.dart \
+            --dart-define-from-file=.env/development.env \
+            --build-name=${BUILD_NAME} --build-number=${BUILD_NUMBER}
+      - name: deploy to firebase
+        uses: ./.github/actions/firebase-app-distribution
         with:
-          appId: ${{ secrets.FIREBASE_APP_ID }}
-          serviceCredentialsFileContent: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-          groups: "devs"
-          file: app/build/outputs/apk/release/app-release.apk
+          firebase-service-credentials: ${{ secrets.FIREBASE_SERVICE_CREDENTIALS }}
+          app-file-path: build/app/outputs/flutter-apk/app-development-release.apk
+          firebase-app-id: ${{ secrets.FIREBASE_ANDROID_APP_ID }}
+          distribute: true
+          tester-groups: dev
