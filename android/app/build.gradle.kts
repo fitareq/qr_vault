@@ -26,7 +26,7 @@ android {
         create("release") {
             keyAlias = System.getenv("KEY_ALIAS")
             keyPassword = System.getenv("KEY_PASSWORD")
-            storeFile = file("${rootDir}/app/eshiksa-key.jks")
+            storeFile = file("${rootDir}/app/upload-keystore.jks")
             storePassword = System.getenv("KEYSTORE_PASSWORD")
         }
     }
