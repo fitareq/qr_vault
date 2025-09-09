@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "671308185991",
+    "firebase_url": "https://ecart-a797c.firebaseio.com",
+    "project_id": "ecart-a797c",
+    "storage_bucket": "ecart-a797c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:671308185991:android:a6bf58f0df644339789322",
+        "android_client_info": {
+          "package_name": "com.fitareq.qr_vault"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpnmAYTeMZc0uRZDLS0XvdE5-k_X6igQg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
