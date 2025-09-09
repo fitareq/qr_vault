@@ -37,7 +37,7 @@ jobs:
           BUILD_NAME=$(date +'%Y.%m.%d')
 
           flutter build apk \
-            --target lib/main_development.dart \
+            --target lib/main.dart \
             --dart-define-from-file=.env/development.env \
             --build-name=${BUILD_NAME} --build-number=${BUILD_NUMBER}
       - name: deploy to firebase
