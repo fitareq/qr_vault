@@ -40,7 +40,7 @@ runs:
       env:
         FIREBASE_SERVICE_CREDENTIALS: ${{ inputs.firebase-service-credentials }}
       run: |
-        echo $FIREBASE_SERVICE_CREDENTIALS | base64 --decode | jq > firebase-credentials.json
+        echo $FIREBASE_SERVICE_CREDENTIALS > firebase-credentials.json
         echo "GOOGLE_APPLICATION_CREDENTIALS=firebase-credentials.json" >> $GITHUB_ENV
     # Deploy App to Firebase
     - name: Deploy App to Firebase
