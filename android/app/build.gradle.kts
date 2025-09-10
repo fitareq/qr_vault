@@ -1,3 +1,6 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     id("com.android.application")
     // START: FlutterFire Configuration
@@ -7,7 +10,11 @@ plugins {
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
 }
-
+val keyStoreProperties = Properties()
+val keystorePropertiesFile = rootProject.file("key.properties")
+if (keystorePropertiesFile.exists()) {
+    keyStoreProperties.load(FileInputStream(keystorePropertiesFile))
+}
 android {
     namespace = "com.fitareq.qr_vault"
     compileSdk = flutter.compileSdkVersion
@@ -24,10 +31,10 @@ android {
 
     signingConfigs {
         create("release") {
-            keyAlias = System.getenv("KEYSTORE_ALIAS")
-            keyPassword = System.getenv("KEYSTORE_PASSWORD")
-            storePassword = System.getenv("KEYSTORE_PASSWORD")
-            storeFile = file("${rootDir}/app/upload-keystore.jks")
+            keyAlias = keyStoreProperties["keyAlias"] as String
+            keyPassword = keyStoreProperties["keyPassword"] as String
+            storeFile = keyStoreProperties["storeFile"]?.let { file(it) }
+            storePassword = keyStoreProperties["storePassword"] as String
 
         }
     }

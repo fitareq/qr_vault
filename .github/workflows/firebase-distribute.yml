@@ -32,14 +32,8 @@ jobs:
           EOF
 
       - name: build apk
-        env:
-          BUILD_NUMBER: ${{ github.run_number }}
-        run: |
-          BUILD_NAME=$(date +'%Y.%m.%d')
+        run: flutter build apk
 
-          flutter build apk \
-            --target lib/main.dart \
-            --build-name=${BUILD_NAME} --build-number=${BUILD_NUMBER}
       - name: deploy to firebase
         uses: ./.github/actions/firebase-app-distribution
         with:
